@@ -1,0 +1,7 @@
+#rainbow
+# DONE: janky sanity logic, prolly a cleaner way to do this
+# TODO: fix/test clean_up
+# TODO: make _static_ bookmarks that should be deleted
+# TODO: sort by time would be cool
+# TODO: autocomplete marks
+# TODO: interactive mode
