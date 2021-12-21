@@ -4,6 +4,8 @@ Bash bookmarking utility (OSX/BSD compatible using CoreUtils)
 
 ## Overview
 
+This bad boy needs some cleanup but works up to Bash 5.
+
 What you'll need:
   * The linux-standard realpath command
   * Local Bin ($HOME/.local/bin) directory to store your user scripts
