@@ -1,4 +1,4 @@
-# MARK(1) v0.5
+# MARK(1) v0.6
 
 Bash bookmarking utility (OSX/BSD compatible using CoreUtils)
 
