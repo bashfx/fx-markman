@@ -190,7 +190,8 @@ EOF
 
   read_mark(){
     local ref this="$1"; [ ! -e "$this" ] && this="$MY_MARK/$1";
-    [ -e "$this" ] && ref=$(readlink $this) || err="Link destination doesnt exist."
+    [ -e "$this" ] && ref=$(readlink $this) || err="Link destination doesnt exist. ($this $1)"
+    [ "$this" == "$1" ] && err="You're already here."
     printf "$ref"
   }
 
@@ -273,12 +274,15 @@ EOF
   }
 
   reset(){
-    local src="$BASH_PROFILE";
+    local src="$BASH_PROFILE" MARK_BAK="$HOME/markman.${RANDOM}.bak" 
     sed -i.bak "/#### markman ####/,/########/d" "$src";
     rm -f "${src}.bak";
 
-    [ -d $MY_MARK_BIN ] && mv "$MY_MARK" "$HOME/markman.bak";
-    stderr "${red}Backup file created at ~/markman.bak${x}";
+    if [ -d $MY_MARK ]; then 
+      mv "$MY_MARK" "${MARK_BAK}";
+      rm -rf "$MY_MARK"
+      stderr "${red}Backup file created at ${MARK_BAK}${x}";
+    fi
 
     [ -f $MY_MARK_BIN ] && rm $MY_MARK_BIN;
     out="${red}- Markman MARK(1) has been uninstalled ...";
